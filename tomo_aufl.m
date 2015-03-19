@@ -1,4 +1,4 @@
-%function [] = tomo_aufl(obsfile,dx,lbar)
+%function [] = tomo_aufl(obsfile, dx, lbar)
 % 1D tomography
 % parameter:
 % obsfile             path to file with data
@@ -8,7 +8,7 @@
 
 dx=0.1;
 lbar=20;
-obsfile='data.in';
+obsfile='data/data.in';
 %% read
 num_nodes = lbar/dx;                            % number of model points
 xm = linspace(0,lbar,num_nodes);                % discretize bar (model points xm)
@@ -35,14 +35,16 @@ for i=1:num_nodes
         slowness(i)=peak;
     end
 end
-%% 
+%%
 g = zeros(num_nodes,num_data);  % calculate representers
 for j=1:num_data
     g(:,j) = xm >= min(xs(j),xr(j)) & xm < max(xs(j),xr(j));
 end
 %--------------------------------------------------------------------------
+synfile='data/data_syn.in';
+
 ttsyn = slowness*g*dx/100.;                      %predicted travel times by test model
-fid = fopen('U:\Uni\MasterOfScience\11. Semester\Inversionstheorie\data_syn.in', 'w');
+fid = fopen(synfile, 'w');
 %fprintf(fid, '%s  %s  %s\n', 'source','resiever','syn. traveltime');
 fprintf(fid,'%8.3f\n',ttsyn);
 fclose(fid);
@@ -52,8 +54,7 @@ f1 = figure('Name','Slowness Modell');
 plot(xm,slowness);
 xlabel ('Abtastinterval [cm]'); ylabel('Slowness [s/km]');
 %% Annahme exakte Daten und L2-Norm
-synfile='data_syn.in';
-syndata=dlmread(synfile);                       % read data
+syndata=dlmread(synfile);                  % read data
 ttsyn1 = syndata(:,1);
 
 G = g'*g*dx;                               %calculate  Gram-matrix

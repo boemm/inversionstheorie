@@ -1,7 +1,7 @@
 %% ---------------------------------------------------------------------
 % 1D-Tomographie mit L2-Norm und Messfehlern - Übungsblatt 6
 
-function [] = tomo1D_misfit(inputdata,delta_x,lbar)
+function [] = tomo1D_misfit(inputdata, delta_x,lbar)
 
 %%Parameter
 %inputdata					%Tomo. data (number, source, resiever,travel time)

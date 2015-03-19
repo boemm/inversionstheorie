@@ -2,7 +2,7 @@
 %%1D-Tomographie mit Ableitungsnorm - Übungsblatt 5
 %
 
-function [] = tomo1D_an(inputdata,delta_x,lbar)
+function [] = tomo1D_an(inputdata, delta_x,lbar)
 
 %%Parameter
 %inputdata					%Tomo. data (number, source, resiever,travel time)

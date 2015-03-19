@@ -1,7 +1,7 @@
 %---------------------------------------------------------------------
 % 1D tomography L2-norm with errors, bisection algorithm for correct nu
 %
-obsfile='messorig.in';                  % file with data
+obsfile='data/messorig.in';                  % file with data
 lbar = 15;                          % length of bar (15 cm)
 nm = 151;                           % number of model points
 nnu = 24;                           % number of nu-values
